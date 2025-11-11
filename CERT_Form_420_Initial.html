@@ -1,0 +1,871 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="application/xhtml+xml; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>CERT Form 420 - Incident Report</title>
+
+<style type="text/css">
+body, td, th {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: inherit;
+}
+
+.form-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+.form-header {
+    text-align: center;
+    background-color: #003366;
+    color: white;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+.form-header h1 {
+    margin: 5px 0;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.form-header .subtitle {
+    font-size: 14px;
+    margin: 3px 0;
+}
+
+.form-header .version {
+    font-size: 10px;
+    margin: 3px 0;
+    font-style: italic;
+}
+
+.section {
+    border: 2px solid #333;
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: #f9f9f9;
+}
+
+.section-title {
+    font-weight: bold;
+    font-size: 14px;
+    background-color: #666;
+    color: white;
+    padding: 5px 8px;
+    margin: -10px -10px 10px -10px;
+}
+
+.field-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 8px;
+    align-items: flex-start;
+}
+
+.field-group {
+    flex: 1;
+    position: relative;
+}
+
+.field-group.full-width {
+    flex: 1 1 100%;
+}
+
+.field-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 3px;
+    font-size: 11px;
+}
+
+.field-group input[type="text"],
+.field-group select {
+    width: 100%;
+    padding: 4px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    border: 1px solid #999;
+    box-sizing: border-box;
+}
+
+.field-group textarea {
+    width: 100%;
+    padding: 4px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    border: 1px solid #999;
+    box-sizing: border-box;
+    resize: vertical;
+}
+
+.field-group.checkbox-group {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.field-group.checkbox-group label {
+    display: inline;
+    font-weight: normal;
+    margin: 0;
+}
+
+.info-icon {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    line-height: 14px;
+    border-radius: 50%;
+    background: #0066cc;
+    color: white;
+    text-align: center;
+    font-size: 10px;
+    font-weight: bold;
+    cursor: help;
+    margin-left: 4px;
+    vertical-align: middle;
+}
+
+.tooltip {
+    display: none;
+    position: absolute;
+    background: #333;
+    color: white;
+    padding: 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    max-width: 300px;
+    z-index: 1000;
+    top: 100%;
+    left: 0;
+    margin-top: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+@media (hover: hover) {
+    .info-icon:hover + .tooltip,
+    .info-icon:focus + .tooltip {
+        display: block;
+    }
+}
+
+@media (hover: none) {
+    .tooltip {
+        background: #f0f0f0;
+        border: 1px solid #999;
+        color: #333;
+    }
+    
+    .info-icon.active + .tooltip {
+        display: block;
+    }
+}
+
+.radio-group {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.radio-group label {
+    display: inline;
+    font-weight: normal;
+    margin-left: 3px;
+}
+
+.two-column {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.column-header {
+    font-weight: bold;
+    font-size: 12px;
+    text-align: center;
+    margin-bottom: 10px;
+    padding: 5px;
+    background-color: #ddd;
+}
+
+.submit-section {
+    text-align: center;
+    margin-top: 20px;
+    padding: 15px;
+}
+
+.SubmitBtn {
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    padding: 10px 30px;
+    background-color: #003366;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.SubmitBtn:hover {
+    background-color: #004488;
+}
+
+#TextHeader {
+    background-color: #dddddd;
+    font-size: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+.gps-display {
+    font-size: 10px;
+    color: #666;
+    font-style: italic;
+    margin-top: 3px;
+}
+
+.auto-gen-btn {
+    font-size: 10px;
+    padding: 2px 8px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+/* Tablet adjustments (portrait) */
+@media screen and (max-width: 768px) {
+    .field-row {
+        flex-direction: column;
+    }
+    
+    .two-column {
+        grid-template-columns: 1fr;
+    }
+    
+    .form-container {
+        padding: 5px;
+    }
+    
+    .section {
+        padding: 8px;
+    }
+    
+    .info-icon {
+        width: 18px;
+        height: 18px;
+        font-size: 12px;
+    }
+}
+
+/* Smartphone adjustments */
+@media screen and (max-width: 480px) {
+    .form-header h1 {
+        font-size: 16px;
+    }
+    
+    .form-header .subtitle {
+        font-size: 12px;
+    }
+    
+    .section-title {
+        font-size: 12px;
+    }
+    
+    .field-group label {
+        font-size: 10px;
+    }
+    
+    .field-group input[type="text"],
+    .field-group select,
+    .field-group textarea {
+        font-size: 14px; /* Larger for touch input */
+        padding: 6px;
+    }
+    
+    .radio-group {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    
+    .SubmitBtn {
+        width: 100%;
+        padding: 12px;
+        font-size: 16px;
+    }
+    
+    .tooltip {
+        max-width: 90vw;
+        left: 5%;
+        right: 5%;
+    }
+}
+
+/* Landscape tablet */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .form-container {
+        max-width: 95%;
+    }
+}
+
+/* Large desktop */
+@media screen and (min-width: 1200px) {
+    .form-container {
+        max-width: 1000px;
+    }
+}
+
+@media print {
+    .SubmitBtn, .auto-gen-btn, .info-icon {
+        display: none;
+    }
+    
+    .section {
+        page-break-inside: avoid;
+    }
+}
+</style>
+
+<script type="text/javascript">
+var rxcounter = 0;
+
+// Auto-generate Reference ID
+function generateRefID() {
+    var now = new Date();
+    var year = now.getFullYear();
+    var month = String(now.getMonth() + 1).padStart(2, '0');
+    var day = String(now.getDate()).padStart(2, '0');
+    var counter = String(++rxcounter).padStart(3, '0');
+    document.getElementById('RefID').value = year + month + day + '-' + counter;
+}
+
+// Format date as MM/DD/YYYY
+function formatDate(date) {
+    var month = String(date.getMonth() + 1).padStart(2, '0');
+    var day = String(date.getDate()).padStart(2, '0');
+    var year = date.getFullYear();
+    return month + '/' + day + '/' + year;
+}
+
+// Format time as 24-hour HH:MM
+function formatTime(date) {
+    var hours = String(date.getHours()).padStart(2, '0');
+    var minutes = String(date.getMinutes()).padStart(2, '0');
+    return hours + ':' + minutes;
+}
+
+// Get GPS location
+function getGPSLocation() {
+    if (navigator.geolocation) {
+        document.getElementById('gpsStatus').innerHTML = 'Getting location...';
+        navigator.geolocation.getCurrentPosition(
+            function(position) {
+                var lat = position.coords.latitude.toFixed(6);
+                var lon = position.coords.longitude.toFixed(6);
+                document.getElementById('GPSLat').value = lat;
+                document.getElementById('GPSLon').value = lon;
+                document.getElementById('GPSSource').value = 'GPS';
+                document.getElementById('gpsDisplay').innerHTML = 'GPS: ' + lat + ', ' + lon;
+                document.getElementById('gpsStatus').innerHTML = '';
+            },
+            function(error) {
+                document.getElementById('GPSSource').value = 'Manual';
+                document.getElementById('gpsStatus').innerHTML = 'GPS not available - enter address manually';
+                console.log('GPS Error: ' + error.message);
+            },
+            {
+                enableHighAccuracy: true,
+                timeout: 10000,
+                maximumAge: 0
+            }
+        );
+    } else {
+        document.getElementById('GPSSource').value = 'Manual';
+        document.getElementById('gpsStatus').innerHTML = 'GPS not supported by this browser';
+    }
+}
+
+// Initialize form with default values
+function initializeForm() {
+    var now = new Date();
+    
+    // Set receiving operator date/time (current)
+    document.getElementById('RxOpDate').value = formatDate(now);
+    document.getElementById('RxOpTime').value = formatTime(now);
+    
+    // Set sending operator date/time (current)
+    document.getElementById('TxOpDate').value = formatDate(now);
+    document.getElementById('TxOpTime').value = formatTime(now);
+    
+    // Try to get GPS location
+    getGPSLocation();
+    
+    // Generate initial Ref ID
+    generateRefID();
+}
+
+// Toggle info tooltips for mobile
+function toggleTooltip(element) {
+    element.classList.toggle('active');
+}
+
+// Handle "Other" option in dropdowns
+function checkOther(selectElement, otherId) {
+    var otherField = document.getElementById(otherId);
+    if (selectElement.value === 'Other') {
+        otherField.style.display = 'block';
+        otherField.required = true;
+    } else {
+        otherField.style.display = 'none';
+        otherField.required = false;
+        otherField.value = '';
+    }
+}
+
+// Validate form before submission
+function validateForm() {
+    var requiredFields = document.querySelectorAll('[required]');
+    var allFilled = true;
+    var firstEmpty = null;
+    
+    requiredFields.forEach(function(field) {
+        if (!field.value || field.value === '') {
+            allFilled = false;
+            if (!firstEmpty) {
+                firstEmpty = field;
+            }
+            field.style.borderColor = 'red';
+        } else {
+            field.style.borderColor = '#999';
+        }
+    });
+    
+    if (!allFilled) {
+        alert('Please fill in all required fields (marked in red)');
+        if (firstEmpty) {
+            firstEmpty.focus();
+        }
+        return false;
+    }
+    
+    return true;
+}
+
+// Submit form
+function submitForm() {
+    if (!validateForm()) {
+        return false;
+    }
+    
+    // Build GPS coordinates display
+    var gpsLat = document.getElementById('GPSLat').value;
+    var gpsLon = document.getElementById('GPSLon').value;
+    var gpsCoords = '';
+    if (gpsLat && gpsLon) {
+        gpsCoords = 'GPS: ' + gpsLat + ', ' + gpsLon;
+    }
+    document.getElementById('GPSCoords').value = gpsCoords;
+    
+    // Handle "Other" options
+    var incidentType = document.getElementById('IncidentType').value;
+    if (incidentType === 'Other') {
+        var otherType = document.getElementById('IncidentTypeOther').value;
+        document.getElementById('IncidentType').value = 'Other: ' + otherType;
+    }
+    
+    document.getElementById('formID').submit();
+}
+
+// Initialize on load
+window.onload = function() {
+    initializeForm();
+    
+    // Add click handlers for mobile tooltips
+    document.querySelectorAll('.info-icon').forEach(function(icon) {
+        icon.addEventListener('click', function(e) {
+            e.preventDefault();
+            toggleTooltip(this);
+        });
+    });
+};
+</script>
+</head>
+
+<body>
+<div class="form-container">
+
+<!-- Form Header -->
+<div class="form-header">
+    <h1>Los Gatos / Monte Sereno CERT</h1>
+    <div class="subtitle">CERT Form 420 - INCIDENT REPORT</div>
+    <div class="version">Version 2.5, 2023-04</div>
+</div>
+
+<form method="post" action="upload:///CERT_Form_420.txt" id="formID" name="formID">
+
+<!-- Hidden fields for GPS and metadata -->
+<input type="hidden" name="GPSLat" id="GPSLat" />
+<input type="hidden" name="GPSLon" id="GPSLon" />
+<input type="hidden" name="GPSSource" id="GPSSource" />
+<input type="hidden" name="GPSCoords" id="GPSCoords" />
+
+<!-- ICP Operations Only Section -->
+<div class="section">
+    <div class="section-title">FOR ICP OPERATIONS ONLY</div>
+    
+    <!-- Row 1 -->
+    <div class="field-row">
+        <div class="field-group">
+            <label>
+                A. Incident Ref ID:
+                <span class="info-icon" tabindex="0">i</span>
+                <div class="tooltip">Sequential reference number assigned by ICP staff for tracking this incident. Use format: YYYYMMDD-### (e.g., 20231015-001)</div>
+            </label>
+            <input type="text" name="RefID" id="RefID" required />
+            <button type="button" class="auto-gen-btn" onclick="generateRefID()">Auto-Generate</button>
+        </div>
+        
+        <div class="field-group">
+            <label>
+                Notify EOC:
+                <span class="info-icon" tabindex="0">i</span>
+                <div class="tooltip">Check if the Emergency Operations Center (EOC) needs to be notified of this incident. Select Yes for incidents requiring EOC awareness or potential resource coordination.</div>
+            </label>
+            <div class="radio-group">
+                <input type="radio" name="NotifyEOC" id="NotifyEOC_Yes" value="Yes" required />
+                <label for="NotifyEOC_Yes">Yes</label>
+                <input type="radio" name="NotifyEOC" id="NotifyEOC_No" value="No" />
+                <label for="NotifyEOC_No">No</label>
+                <input type="radio" name="NotifyEOC" id="NotifyEOC_NA" value="n/a" />
+                <label for="NotifyEOC_NA">n/a</label>
+            </div>
+        </div>
+        
+        <div class="field-group">
+            <label>
+                White Board Listed?:
+                <span class="info-icon" tabindex="0">i</span>
+                <div class="tooltip">Indicates whether this incident is being tracked on the ICP command white board. Select Yes if actively monitoring at ICP.</div>
+            </label>
+            <div class="radio-group">
+                <input type="radio" name="WhiteBoardListed" id="WhiteBoardListed_Yes" value="Yes" required />
+                <label for="WhiteBoardListed_Yes">Yes</label>
+                <input type="radio" name="WhiteBoardListed" id="WhiteBoardListed_No" value="No" />
+                <label for="WhiteBoardListed_No">No</label>
+                <input type="radio" name="WhiteBoardListed" id="WhiteBoardListed_NA" value="n/a" />
+                <label for="WhiteBoardListed_NA">n/a</label>
+            </div>
+        </div>
+        
+        <div class="field-group">
+            <label>
+                Resolved:
+                <span class="info-icon" tabindex="0">i</span>
+                <div class="tooltip">Check if the incident has been resolved and requires no further action. Select Yes only when incident is completely closed.</div>
+            </label>
+            <div class="radio-group">
+                <input type="radio" name="Resolved" id="Resolved_Yes" value="Yes" required />
+                <label for="Resolved_Yes">Yes</label>
+                <input type="radio" name="Resolved" id="Resolved_No" value="No" />
+                <label for="Resolved_No">No</label>
+                <input type="radio" name="Resolved" id="Resolved_NA" value="n/a" />
+                <label for="Resolved_NA">n/a</label>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Row 2 -->
+    <div class="field-row">
+        <div class="field-group">
+            <label>
+                B. Priority:
+                <span class="info-icon" tabindex="0">i</span>
+                <div class="tooltip">Priority level for response. Immediate = Life safety threat requiring immediate action. High = Significant property threat or injury. Medium = Moderate threat requiring attention. Low = Minor issue, routine response. Routine = Informational only.</div>
+            </label>
+            <select name="Priority" id="Priority" required>
+                <option value="">-- Select Priority --</option>
+                <option value="Immediate">Immediate</option>
+                <option value="High">High</option>
+                <option value="Medium">Medium</option>
+                <option value="Low">Low</option>
+                <option value="Routine">Routine</option>
+                <option value="n/a">n/a</option>
+            </select>
+        </div>
+        
+        <div class="field-group">
+            <label>
+                C. EOC Response Requested?:
+                <span class="info-icon" tabindex="0">i</span>
+                <div class="tooltip">Select Yes if this incident requires resources or action from the EOC. This may include equipment, personnel, or coordination with other agencies.</div>
+            </label>
+            <div class="radio-group">
+                <input type="radio" name="EOCResponseReq" id="EOCResponseReq_Yes" value="Yes" required />
+                <label for="EOCResponseReq_Yes">Yes</label>
+                <input type="radio" name="EOCResponseReq" id="EOCResponseReq_No" value="No" />
+                <label for="EOCResponseReq_No">No</label>
+                <input type="radio" name="EOCResponseReq" id="EOCResponseReq_NA" value="n/a" />
+                <label for="EOCResponseReq_NA">n/a</label>
+            </div>
+        </div>
+        
+        <div class="field-group">
+            <label>
+                E. Ham Records EOC ID:
+                <span class="info-icon" tabindex="0">i</span>
+                <div class="tooltip">EOC incident tracking number assigned by EOC staff. Leave blank if not yet assigned by EOC. Format: EOC-### or as specified by your EOC.</div>
+            </label>
+            <input type="text" name="HamEOCID" id="HamEOCID" required />
+        </div>
+        
+        <div class="field-group">
+            <label>
+                Transferred?:
+                <span class="info-icon" tabindex="0">i</span>
+                <div class="tooltip">Select Yes if responsibility for this incident has been transferred to another agency, EOC, or command post. Include details in field D.</div>
+            </label>
+            <div class="radio-group">
+                <input type="radio" name="Transferred" id="Transferred_Yes" value="Yes" required />
+                <label for="Transferred_Yes">Yes</label>
+                <input type="radio" name="Transferred" id="Transferred_No" value="No" />
+                <label for="Transferred_No">No</label>
+                <input type="radio" name="Transferred" id="Transferred_NA" value="n/a" />
+                <label for="Transferred_NA">n/a</label>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Row 3 -->
+    <div class="field-row">
+        <div class="field-group full-width">
+            <label>
+                D. ICP notes on Actions Plan or EOC Request:
+                <span class="info-icon" tabindex="0">i</span>
+                <div class="tooltip">ICP staff notes describing the action plan for this incident, status updates, resource requests to EOC, or any special instructions. Include what actions ICP is taking or requesting from EOC.</div>
+            </label>
+            <textarea name="ICPNotes" id="ICPNotes" rows="3" required></textarea>
+        </div>
+    </div>
+</div>
+
+<!-- CERT Reporting Section -->
+<div class="section">
+    <div class="section-title">CERT REPORTING SECTION</div>
+    
+    <!-- Row 1 - 5 fields across -->
+    <div class="field-row">
+        <div class="field-group">
+            <label>
+                F. Your Name:
+                <span class="info-icon" tabindex="0">i</span>
+                <div class="tooltip">Full name of the CERT member reporting this incident. This identifies who is providing the information to ICP.</div>
+            </label>
+            <input type="text" name="YourName" id="YourName" required />
+        </div>
+        
+        <div class="field-group">
+            <label>
+                G. Team ID:
+                <span class="info-icon" tabindex="0">i</span>
+                <div class="tooltip">Your CERT team identifier or deployment number. Example: Team 1, Team Alpha, or deployment assignment number provided during activation.</div>
+            </label>
+            <input type="text" name="TeamID" id="TeamID" required />
+        </div>
+        
+        <div class="field-group">
+            <label>
+                H. Incident Type:
+                <span class="info-icon" tabindex="0">i</span>
+                <div class="tooltip">Select the primary type of incident. Choose the category that best describes the situation. Select 'Other' if the incident doesn't fit standard categories.</div>
+            </label>
+            <select name="IncidentType" id="IncidentType" onchange="checkOther(this, 'IncidentTypeOther')" required>
+                <option value="">-- Select Type --</option>
+                <option value="Fire">Fire</option>
+                <option value="Medical Emergency">Medical Emergency</option>
+                <option value="Hazmat/Chemical Spill">Hazmat/Chemical Spill</option>
+                <option value="Structural Damage/Collapse">Structural Damage/Collapse</option>
+                <option value="Utility Problem">Utility Problem (Gas/Electric/Water)</option>
+                <option value="Search & Rescue">Search & Rescue</option>
+                <option value="Traffic/Transportation">Traffic/Transportation</option>
+                <option value="Flooding">Flooding</option>
+                <option value="Earthquake Damage">Earthquake Damage</option>
+                <option value="n/a">n/a</option>
+                <option value="Other">Other (specify)</option>
+            </select>
+            <input type="text" id="IncidentTypeOther" placeholder="Specify other..." style="display:none; margin-top: 3px;" />
+        </div>
+        
+        <div class="field-group">
+            <label>
+                I. Phone Number:
+                <span class="info-icon" tabindex="0">i</span>
+                <div class="tooltip">Contact phone number for the reporting CERT member. Include cell phone or best number to reach you in the field.</div>
+            </label>
+            <input type="text" name="PhoneNumber" id="PhoneNumber" required />
+        </div>
+        
+        <div class="field-group">
+            <label>
+                J. Site Access:
+                <span class="info-icon" tabindex="0">i</span>
+                <div class="tooltip">Describe how to access the incident location. Include specific directions, gate codes, landmarks, or any access restrictions (e.g., 'North side via Oak St', 'Gate locked - key at #123', 'Accessible from rear alley only').</div>
+            </label>
+            <input type="text" name="SiteAccess" id="SiteAccess" required />
+        </div>
+    </div>
+    
+    <!-- Incident Address -->
+    <div class="field-row">
+        <div class="field-group full-width">
+            <label>
+                K. Incident Address:
+                <span class="info-icon" tabindex="0">i</span>
+                <div class="tooltip">Complete street address or specific location of the incident. Include cross streets if address unknown (e.g., '123 Main St' or 'Main St & Oak Ave'). GPS coordinates will be automatically added below if available from your device.</div>
+            </label>
+            <textarea name="IncidentAddress" id="IncidentAddress" rows="2" required></textarea>
+            <div class="gps-display" id="gpsDisplay"></div>
+            <div class="gps-display" id="gpsStatus"></div>
+        </div>
+    </div>
+    
+    <!-- Incident Description -->
+    <div class="field-row">
+        <div class="field-group full-width">
+            <label>
+                L. Incident Description:
+                <span class="info-icon" tabindex="0">i</span>
+                <div class="tooltip">Detailed description of what you observed at the incident scene. Include what happened, current conditions, size/extent of incident, and any immediate concerns. Be specific and objective (e.g., 'Single story wood frame house with visible smoke from rear, no flames visible, residents evacuated').</div>
+            </label>
+            <textarea name="IncidentDesc" id="IncidentDesc" rows="4" required></textarea>
+        </div>
+    </div>
+    
+    <!-- CERT Action Plan -->
+    <div class="field-row">
+        <div class="field-group full-width">
+            <label>
+                M. CERT Action Plan:
+                <span class="info-icon" tabindex="0">i</span>
+                <div class="tooltip">Describe what actions your CERT team is taking or planning to take. Include what you've already done and what you plan to do next (e.g., 'Established safe perimeter, conducting door-to-door welfare checks on adjacent homes, maintaining scene security').</div>
+            </label>
+            <textarea name="CERTActionPlan" id="CERTActionPlan" rows="3" required></textarea>
+        </div>
+    </div>
+    
+    <!-- Notes -->
+    <div class="field-row">
+        <div class="field-group full-width">
+            <label>
+                N. Notes:
+                <span class="info-icon" tabindex="0">i</span>
+                <div class="tooltip">Additional information not covered above. Include: Hazards (fire, gas leak, downed power lines, etc.), Resources Needed (equipment, personnel), Victims (number and status if applicable), Other relevant details.</div>
+            </label>
+            <textarea name="Notes" id="Notes" rows="4" required placeholder="Suggested format:&#10;Hazards: &#10;Resources Needed: &#10;Victims: &#10;Other: "></textarea>
+        </div>
+    </div>
+</div>
+
+<!-- Radio Operator Tracking Section -->
+<div class="section">
+    <div class="section-title">FOR ICP/EOC USE - RADIO OPERATOR TRACKING</div>
+    
+    <div class="two-column">
+        <!-- Receiving Operator Column -->
+        <div>
+            <div class="column-header">Receiving Radio Operator</div>
+            
+            <div class="field-group" style="margin-bottom: 10px;">
+                <label>
+                    Name:
+                    <span class="info-icon" tabindex="0">i</span>
+                    <div class="tooltip">Name of the radio operator who received this message. This is typically the operator at ICP or EOC who is logging the incoming message from the field.</div>
+                </label>
+                <input type="text" name="RxOpName" id="RxOpName" required />
+            </div>
+            
+            <div class="field-group" style="margin-bottom: 10px;">
+                <label>
+                    Call Sign:
+                    <span class="info-icon" tabindex="0">i</span>
+                    <div class="tooltip">Amateur radio call sign of the receiving operator (e.g., KG6XYZ). Enter 'n/a' if not using amateur radio or if operator doesn't have a call sign.</div>
+                </label>
+                <input type="text" name="RxOpCall" id="RxOpCall" required />
+            </div>
+            
+            <div class="field-group" style="margin-bottom: 10px;">
+                <label>
+                    Time:
+                    <span class="info-icon" tabindex="0">i</span>
+                    <div class="tooltip">Time the message was received. Auto-populated with current time, but can be adjusted if needed. Use 24-hour format (e.g., 14:30 for 2:30 PM).</div>
+                </label>
+                <input type="text" name="RxOpTime" id="RxOpTime" required />
+            </div>
+            
+            <div class="field-group" style="margin-bottom: 10px;">
+                <label>
+                    Date:
+                    <span class="info-icon" tabindex="0">i</span>
+                    <div class="tooltip">Date the message was received. Auto-populated with current date, but can be adjusted if needed. Format: MM/DD/YYYY</div>
+                </label>
+                <input type="text" name="RxOpDate" id="RxOpDate" required />
+            </div>
+        </div>
+        
+        <!-- Sending Operator Column -->
+        <div>
+            <div class="column-header">Sending Radio Operator</div>
+            
+            <div class="field-group" style="margin-bottom: 10px;">
+                <label>
+                    Name:
+                    <span class="info-icon" tabindex="0">i</span>
+                    <div class="tooltip">Name of the radio operator who transmitted/sent this message. This is typically the operator at the field location or ICP who is sending to EOC.</div>
+                </label>
+                <input type="text" name="TxOpName" id="TxOpName" required />
+            </div>
+            
+            <div class="field-group" style="margin-bottom: 10px;">
+                <label>
+                    Call Sign:
+                    <span class="info-icon" tabindex="0">i</span>
+                    <div class="tooltip">Amateur radio call sign of the sending operator (e.g., W6ABC). Enter 'n/a' if not using amateur radio or if operator doesn't have a call sign.</div>
+                </label>
+                <input type="text" name="TxOpCall" id="TxOpCall" required />
+            </div>
+            
+            <div class="field-group" style="margin-bottom: 10px;">
+                <label>
+                    Time:
+                    <span class="info-icon" tabindex="0">i</span>
+                    <div class="tooltip">Time the message was sent/transmitted. Auto-populated with current time, but can be adjusted if needed. Use 24-hour format (e.g., 14:30 for 2:30 PM).</div>
+                </label>
+                <input type="text" name="TxOpTime" id="TxOpTime" required />
+            </div>
+            
+            <div class="field-group" style="margin-bottom: 10px;">
+                <label>
+                    Date:
+                    <span class="info-icon" tabindex="0">i</span>
+                    <div class="tooltip">Date the message was sent/transmitted. Auto-populated with current date, but can be adjusted if needed. Format: MM/DD/YYYY</div>
+                </label>
+                <input type="text" name="TxOpDate" id="TxOpDate" required />
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Submit Section -->
+<div class="submit-section">
+    <input type="button" class="SubmitBtn" value="Submit Form" onclick="submitForm()" />
+</div>
+
+</form>
+
+</div>
+</body>
+</html>

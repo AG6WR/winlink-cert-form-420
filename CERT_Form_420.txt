@@ -1,0 +1,66 @@
+Form: CERT_Form_420_Initial.html,CERT_Form_420_Viewer.html
+
+To: 
+Subject: CERT 420 - <var Priority> - Ref: <var RefID> - <var IncidentAddress>
+Readonly: True
+Msg:
+Los Gatos / Monte Sereno CERT
+CERT Form 420 - INCIDENT REPORT
+Version 2.5, 2023-04
+
+========================================
+FOR ICP OPERATIONS ONLY
+========================================
+
+A. Incident Ref ID: <var RefID>
+   Notify EOC: <var NotifyEOC>
+   White Board Listed?: <var WhiteBoardListed>
+   Resolved: <var Resolved>
+
+B. Priority: <var Priority>
+   C. EOC Response Requested?: <var EOCResponseReq>
+   E. Ham Records EOC ID: <var HamEOCID>
+   Transferred?: <var Transferred>
+
+D. ICP notes on Actions Plan or EOC Request:
+<var ICPNotes>
+
+========================================
+CERT REPORTING SECTION
+========================================
+
+F. Your Name: <var YourName>
+G. Team ID: <var TeamID>
+H. Incident Type: <var IncidentType>
+I. Phone Number: <var PhoneNumber>
+J. Site Access: <var SiteAccess>
+
+K. Incident Address:
+<var IncidentAddress>
+<var GPSCoords>
+
+L. Incident Description:
+<var IncidentDesc>
+
+M. CERT Action Plan:
+<var CERTActionPlan>
+
+N. Notes:
+<var Notes>
+
+========================================
+FOR ICP/EOC USE - RADIO OPERATOR TRACKING
+========================================
+
+RECEIVING RADIO OPERATOR          SENDING RADIO OPERATOR
+Name: <var RxOpName>              Name: <var TxOpName>
+Call Sign: <var RxOpCall>         Call Sign: <var TxOpCall>
+Time: <var RxOpTime>              Time: <var TxOpTime>
+Date: <var RxOpDate>              Date: <var TxOpDate>
+
+========================================
+Express Sending Station: <MsgSender>
+Senders Express Version: <ProgramVersion>
+Form Version: 2.5, 2023-04
+Location Source: <var GPSSource>
+[Lat: <var GPSLat>, Lon: <var GPSLon>]

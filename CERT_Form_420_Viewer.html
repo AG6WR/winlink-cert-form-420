@@ -1,0 +1,441 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="application/xhtml+xml; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>CERT Form 420 - {var RefID}</title>
+
+<style type="text/css">
+@media print {
+    #printPageButton {
+        display: none;
+    }
+    .no-print {
+        display: none !important;
+    }
+}
+
+body, td, th {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+}
+
+.form-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+.form-header {
+    text-align: center;
+    background-color: #003366;
+    color: white;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+.form-header h1 {
+    margin: 5px 0;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.form-header .subtitle {
+    font-size: 14px;
+    margin: 3px 0;
+}
+
+.form-header .version {
+    font-size: 10px;
+    margin: 3px 0;
+    font-style: italic;
+}
+
+.section {
+    border: 2px solid #333;
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: #f9f9f9;
+}
+
+.section-title {
+    font-weight: bold;
+    font-size: 14px;
+    background-color: #666;
+    color: white;
+    padding: 5px 8px;
+    margin: -10px -10px 10px -10px;
+}
+
+.field-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.field-group {
+    flex: 1;
+}
+
+.field-group.full-width {
+    flex: 1 1 100%;
+}
+
+.field-label {
+    font-weight: bold;
+    font-size: 11px;
+    margin-bottom: 2px;
+}
+
+.field-value {
+    padding: 4px;
+    background-color: white;
+    border: 1px solid #999;
+    min-height: 20px;
+    font-size: 12px;
+}
+
+.field-value.multiline {
+    white-space: pre-wrap;
+    min-height: 40px;
+}
+
+.two-column {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.column-header {
+    font-weight: bold;
+    font-size: 12px;
+    text-align: center;
+    margin-bottom: 10px;
+    padding: 5px;
+    background-color: #ddd;
+}
+
+.print-button {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.print-btn {
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    padding: 10px 30px;
+    background-color: #003366;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.print-btn:hover {
+    background-color: #004488;
+}
+
+.metadata {
+    font-size: 10px;
+    color: #666;
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+}
+
+/* Tablet adjustments (portrait) */
+@media screen and (max-width: 768px) {
+    .field-row {
+        flex-direction: column;
+    }
+    
+    .two-column {
+        grid-template-columns: 1fr;
+    }
+    
+    .form-container {
+        padding: 5px;
+    }
+    
+    .section {
+        padding: 8px;
+    }
+}
+
+/* Smartphone adjustments */
+@media screen and (max-width: 480px) {
+    .form-header h1 {
+        font-size: 16px;
+    }
+    
+    .form-header .subtitle {
+        font-size: 12px;
+    }
+    
+    .section-title {
+        font-size: 12px;
+    }
+    
+    .field-label {
+        font-size: 10px;
+    }
+    
+    .field-value {
+        font-size: 11px;
+        padding: 6px;
+    }
+    
+    .print-btn {
+        width: 100%;
+        padding: 12px;
+        font-size: 16px;
+    }
+}
+
+/* Landscape tablet */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .form-container {
+        max-width: 95%;
+    }
+}
+
+/* Large desktop */
+@media screen and (min-width: 1200px) {
+    .form-container {
+        max-width: 1000px;
+    }
+}
+
+@media print {
+    #printPageButton {
+        display: none;
+    }
+    .no-print {
+        display: none !important;
+    }
+    
+    .section {
+        page-break-inside: avoid;
+    }
+}
+</style>
+
+<script type="text/javascript">
+function printPage() {
+    window.print();
+}
+</script>
+</head>
+
+<body>
+<div class="form-container">
+
+<!-- Print Button -->
+<div class="print-button no-print">
+    <button id="printPageButton" class="print-btn" onclick="printPage()">Print Form</button>
+</div>
+
+<!-- Form Header -->
+<div class="form-header">
+    <h1>Los Gatos / Monte Sereno CERT</h1>
+    <div class="subtitle">CERT Form 420 - INCIDENT REPORT</div>
+    <div class="version">Version 2.5, 2023-04</div>
+</div>
+
+<!-- ICP Operations Only Section -->
+<div class="section">
+    <div class="section-title">FOR ICP OPERATIONS ONLY</div>
+    
+    <!-- Row 1 -->
+    <div class="field-row">
+        <div class="field-group">
+            <div class="field-label">A. Incident Ref ID:</div>
+            <div class="field-value"><var RefID></div>
+        </div>
+        
+        <div class="field-group">
+            <div class="field-label">Notify EOC:</div>
+            <div class="field-value"><var NotifyEOC></div>
+        </div>
+        
+        <div class="field-group">
+            <div class="field-label">White Board Listed?:</div>
+            <div class="field-value"><var WhiteBoardListed></div>
+        </div>
+        
+        <div class="field-group">
+            <div class="field-label">Resolved:</div>
+            <div class="field-value"><var Resolved></div>
+        </div>
+    </div>
+    
+    <!-- Row 2 -->
+    <div class="field-row">
+        <div class="field-group">
+            <div class="field-label">B. Priority:</div>
+            <div class="field-value"><var Priority></div>
+        </div>
+        
+        <div class="field-group">
+            <div class="field-label">C. EOC Response Requested?:</div>
+            <div class="field-value"><var EOCResponseReq></div>
+        </div>
+        
+        <div class="field-group">
+            <div class="field-label">E. Ham Records EOC ID:</div>
+            <div class="field-value"><var HamEOCID></div>
+        </div>
+        
+        <div class="field-group">
+            <div class="field-label">Transferred?:</div>
+            <div class="field-value"><var Transferred></div>
+        </div>
+    </div>
+    
+    <!-- Row 3 -->
+    <div class="field-row">
+        <div class="field-group full-width">
+            <div class="field-label">D. ICP notes on Actions Plan or EOC Request:</div>
+            <div class="field-value multiline"><var ICPNotes></div>
+        </div>
+    </div>
+</div>
+
+<!-- CERT Reporting Section -->
+<div class="section">
+    <div class="section-title">CERT REPORTING SECTION</div>
+    
+    <!-- Row 1 - 5 fields across -->
+    <div class="field-row">
+        <div class="field-group">
+            <div class="field-label">F. Your Name:</div>
+            <div class="field-value"><var YourName></div>
+        </div>
+        
+        <div class="field-group">
+            <div class="field-label">G. Team ID:</div>
+            <div class="field-value"><var TeamID></div>
+        </div>
+        
+        <div class="field-group">
+            <div class="field-label">H. Incident Type:</div>
+            <div class="field-value"><var IncidentType></div>
+        </div>
+        
+        <div class="field-group">
+            <div class="field-label">I. Phone Number:</div>
+            <div class="field-value"><var PhoneNumber></div>
+        </div>
+        
+        <div class="field-group">
+            <div class="field-label">J. Site Access:</div>
+            <div class="field-value"><var SiteAccess></div>
+        </div>
+    </div>
+    
+    <!-- Incident Address -->
+    <div class="field-row">
+        <div class="field-group full-width">
+            <div class="field-label">K. Incident Address:</div>
+            <div class="field-value multiline"><var IncidentAddress>
+<var GPSCoords></div>
+        </div>
+    </div>
+    
+    <!-- Incident Description -->
+    <div class="field-row">
+        <div class="field-group full-width">
+            <div class="field-label">L. Incident Description:</div>
+            <div class="field-value multiline"><var IncidentDesc></div>
+        </div>
+    </div>
+    
+    <!-- CERT Action Plan -->
+    <div class="field-row">
+        <div class="field-group full-width">
+            <div class="field-label">M. CERT Action Plan:</div>
+            <div class="field-value multiline"><var CERTActionPlan></div>
+        </div>
+    </div>
+    
+    <!-- Notes -->
+    <div class="field-row">
+        <div class="field-group full-width">
+            <div class="field-label">N. Notes:</div>
+            <div class="field-value multiline"><var Notes></div>
+        </div>
+    </div>
+</div>
+
+<!-- Radio Operator Tracking Section -->
+<div class="section">
+    <div class="section-title">FOR ICP/EOC USE - RADIO OPERATOR TRACKING</div>
+    
+    <div class="two-column">
+        <!-- Receiving Operator Column -->
+        <div>
+            <div class="column-header">Receiving Radio Operator</div>
+            
+            <div style="margin-bottom: 8px;">
+                <div class="field-label">Name:</div>
+                <div class="field-value"><var RxOpName></div>
+            </div>
+            
+            <div style="margin-bottom: 8px;">
+                <div class="field-label">Call Sign:</div>
+                <div class="field-value"><var RxOpCall></div>
+            </div>
+            
+            <div style="margin-bottom: 8px;">
+                <div class="field-label">Time:</div>
+                <div class="field-value"><var RxOpTime></div>
+            </div>
+            
+            <div style="margin-bottom: 8px;">
+                <div class="field-label">Date:</div>
+                <div class="field-value"><var RxOpDate></div>
+            </div>
+        </div>
+        
+        <!-- Sending Operator Column -->
+        <div>
+            <div class="column-header">Sending Radio Operator</div>
+            
+            <div style="margin-bottom: 8px;">
+                <div class="field-label">Name:</div>
+                <div class="field-value"><var TxOpName></div>
+            </div>
+            
+            <div style="margin-bottom: 8px;">
+                <div class="field-label">Call Sign:</div>
+                <div class="field-value"><var TxOpCall></div>
+            </div>
+            
+            <div style="margin-bottom: 8px;">
+                <div class="field-label">Time:</div>
+                <div class="field-value"><var TxOpTime></div>
+            </div>
+            
+            <div style="margin-bottom: 8px;">
+                <div class="field-label">Date:</div>
+                <div class="field-value"><var TxOpDate></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Metadata -->
+<div class="metadata">
+    <strong>Message Metadata:</strong><br/>
+    Express Sending Station: <var MsgSender><br/>
+    Senders Express Version: <var ProgramVersion><br/>
+    Form Version: 2.5, 2023-04<br/>
+    Location Source: <var GPSSource><br/>
+    GPS Coordinates: [Lat: <var GPSLat>, Lon: <var GPSLon>]
+</div>
+
+</div>
+</body>
+</html>

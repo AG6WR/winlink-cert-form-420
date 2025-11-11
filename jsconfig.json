@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "checkJs": true,
+    "target": "ES5",           // keep language features conservative
+    "lib": ["DOM", "ES5"],     // DOM APIs + basic JS
+    "noEmit": true
+  },
+  "exclude": ["node_modules", "**/*.min.js"]
+}
