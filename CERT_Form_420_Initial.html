@@ -510,36 +510,39 @@ function validateForm() {
         }
     });
     
-    // Validate radio button groups
+    // Validate radio button groups - check if at least one in each group is checked
     var radioGroups = {};
-    var radioButtons = document.querySelectorAll('input[type="radio"][required]');
+    var radioButtons = document.querySelectorAll('input[type="radio"]');
     radioButtons.forEach(function(radio) {
         var groupName = radio.name;
         if (!radioGroups[groupName]) {
             radioGroups[groupName] = {
-                checked: false,
+                hasChecked: false,
+                isRequired: radio.required,
                 firstElement: radio
             };
         }
         if (radio.checked) {
-            radioGroups[groupName].checked = true;
+            radioGroups[groupName].hasChecked = true;
         }
     });
     
-    // Check each radio group
+    // Check each required radio group
     for (var groupName in radioGroups) {
-        if (!radioGroups[groupName].checked) {
+        var group = radioGroups[groupName];
+        if (group.isRequired && !group.hasChecked) {
             allValid = false;
             if (!firstInvalid) {
-                firstInvalid = radioGroups[groupName].firstElement;
+                firstInvalid = group.firstElement;
             }
             // Highlight the radio group container
-            var radioContainer = radioGroups[groupName].firstElement.closest('.radio-group');
+            var radioContainer = group.firstElement.closest('.radio-group');
             if (radioContainer) {
                 radioContainer.style.outline = '2px solid red';
             }
         } else {
-            var radioContainer = radioGroups[groupName].firstElement.closest('.radio-group');
+            // Remove highlight if valid
+            var radioContainer = group.firstElement.closest('.radio-group');
             if (radioContainer) {
                 radioContainer.style.outline = 'none';
             }
