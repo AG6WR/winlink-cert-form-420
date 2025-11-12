@@ -1,4 +1,8 @@
 {
   "files.encoding": "utf8",
-  "files.autoGuessEncoding": false
+  "files.autoGuessEncoding": false,
+  "livePreview.defaultPreviewPath": "/CERT_Form_420_Initial.html",
+  "livePreview.openPreviewTarget": "External Browser",
+  "editor.fontFamily": "'SF Mono', 'Menlo', Monaco, 'Courier New', monospace",
+  "terminal.integrated.fontFamily": "'SF Mono', 'Menlo', Monaco, 'Courier New', monospace"
 }
