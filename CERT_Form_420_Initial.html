@@ -25,6 +25,23 @@ body, td, th {
     color: white;
     padding: 10px;
     margin-bottom: 15px;
+    position: relative;
+}
+
+.form-header .header-logo {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    max-width: 200px;
+    max-height: 80px;
+    height: auto;
+    width: auto;
+}
+
+.form-header .header-text {
+    width: 100%;
+    text-align: center;
 }
 
 .form-header h1 {
@@ -179,6 +196,20 @@ body, td, th {
     margin-left: 3px;
 }
 
+fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+    min-width: 0;
+}
+
+fieldset legend {
+    font-weight: bold;
+    margin-bottom: 3px;
+    font-size: 11px;
+    padding: 0;
+}
+
 .two-column {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -265,6 +296,16 @@ body, td, th {
 
 /* Smartphone adjustments */
 @media screen and (max-width: 480px) {
+    .form-header .header-logo {
+        max-width: 100px;
+        max-height: 50px;
+        left: 5px;
+    }
+    
+    .form-header {
+        padding: 10px 5px 10px 110px;
+    }
+    
     .form-header h1 {
         font-size: 16px;
     }
@@ -372,11 +413,27 @@ function getGPSLocation() {
                 document.getElementById('GPSLon').value = lon;
                 document.getElementById('GPSSource').value = 'GPS';
                 document.getElementById('gpsDisplay').innerHTML = 'GPS: ' + lat + ', ' + lon;
-                document.getElementById('gpsStatus').innerHTML = '';
+                document.getElementById('gpsStatus').innerHTML = '<span style="color: green;">✓ GPS location acquired</span>';
             },
             function(error) {
                 document.getElementById('GPSSource').value = 'Manual';
-                document.getElementById('gpsStatus').innerHTML = 'GPS not available - enter address manually';
+                var errorMsg = 'GPS not available';
+                
+                switch(error.code) {
+                    case error.PERMISSION_DENIED:
+                        errorMsg = 'GPS denied - please enable location permission';
+                        break;
+                    case error.POSITION_UNAVAILABLE:
+                        errorMsg = 'GPS position unavailable - check device settings';
+                        break;
+                    case error.TIMEOUT:
+                        errorMsg = 'GPS timeout - address will be used';
+                        break;
+                    default:
+                        errorMsg = 'GPS error - address will be used';
+                }
+                
+                document.getElementById('gpsStatus').innerHTML = '<span style="color: #cc6600;">' + errorMsg + '</span>';
                 console.log('GPS Error: ' + error.message);
             },
             {
@@ -387,7 +444,7 @@ function getGPSLocation() {
         );
     } else {
         document.getElementById('GPSSource').value = 'Manual';
-        document.getElementById('gpsStatus').innerHTML = 'GPS not supported by this browser';
+        document.getElementById('gpsStatus').innerHTML = '<span style="color: #cc6600;">GPS not supported by this browser</span>';
     }
 }
 
@@ -430,15 +487,22 @@ function checkOther(selectElement, otherId) {
 
 // Validate form before submission
 function validateForm() {
-    var requiredFields = document.querySelectorAll('[required]');
-    var allFilled = true;
-    var firstEmpty = null;
+    var allValid = true;
+    var firstInvalid = null;
     
-    requiredFields.forEach(function(field) {
+    // Validate text inputs, textareas, and selects
+    var textFields = document.querySelectorAll('input[type="text"][required], textarea[required], select[required]');
+    textFields.forEach(function(field) {
+        // Skip if field is hidden (like IncidentTypeOther when not needed)
+        if (field.style.display === 'none' || !field.required) {
+            field.style.borderColor = '#999';
+            return;
+        }
+        
         if (!field.value || field.value === '') {
-            allFilled = false;
-            if (!firstEmpty) {
-                firstEmpty = field;
+            allValid = false;
+            if (!firstInvalid) {
+                firstInvalid = field;
             }
             field.style.borderColor = 'red';
         } else {
@@ -446,10 +510,46 @@ function validateForm() {
         }
     });
     
-    if (!allFilled) {
+    // Validate radio button groups
+    var radioGroups = {};
+    var radioButtons = document.querySelectorAll('input[type="radio"][required]');
+    radioButtons.forEach(function(radio) {
+        var groupName = radio.name;
+        if (!radioGroups[groupName]) {
+            radioGroups[groupName] = {
+                checked: false,
+                firstElement: radio
+            };
+        }
+        if (radio.checked) {
+            radioGroups[groupName].checked = true;
+        }
+    });
+    
+    // Check each radio group
+    for (var groupName in radioGroups) {
+        if (!radioGroups[groupName].checked) {
+            allValid = false;
+            if (!firstInvalid) {
+                firstInvalid = radioGroups[groupName].firstElement;
+            }
+            // Highlight the radio group container
+            var radioContainer = radioGroups[groupName].firstElement.closest('.radio-group');
+            if (radioContainer) {
+                radioContainer.style.outline = '2px solid red';
+            }
+        } else {
+            var radioContainer = radioGroups[groupName].firstElement.closest('.radio-group');
+            if (radioContainer) {
+                radioContainer.style.outline = 'none';
+            }
+        }
+    }
+    
+    if (!allValid) {
         alert('Please fill in all required fields (marked in red)');
-        if (firstEmpty) {
-            firstEmpty.focus();
+        if (firstInvalid) {
+            firstInvalid.focus();
         }
         return false;
     }
@@ -479,7 +579,7 @@ function submitForm() {
         document.getElementById('IncidentType').value = 'Other: ' + otherType;
     }
     
-    document.getElementById('formID').submit();
+    return true;
 }
 
 // Initialize on load
@@ -502,12 +602,15 @@ window.onload = function() {
 
 <!-- Form Header -->
 <div class="form-header">
-    <h1>Los Gatos / Monte Sereno CERT</h1>
-    <div class="subtitle">CERT Form 420 - INCIDENT REPORT</div>
-    <div class="version">Version 2.5, 2023-04</div>
+    <img src="cert_logo.png" alt="Los Gatos / Monte Sereno CERT Logo" class="header-logo" />
+    <div class="header-text">
+        <h1>Los Gatos / Monte Sereno CERT</h1>
+        <div class="subtitle">CERT Form 420 - INCIDENT REPORT</div>
+        <div class="version">Version 2.5, 2023-04</div>
+    </div>
 </div>
 
-<form method="post" action="upload:///CERT_Form_420.txt" id="formID" name="formID">
+<form method="post" action="http://{FormServer}:{FormPort}" id="formID" name="formID" enctype="multipart/form-data" aria-label="CERT Form 420 Incident Report" onsubmit="return confirm('To complete your form submission, click OK and close the open browser window. You will return to the new message window so you can post your message to the outbox');">
 
 <!-- Hidden fields for GPS and metadata -->
 <input type="hidden" name="GPSLat" id="GPSLat" />
@@ -516,35 +619,37 @@ window.onload = function() {
 <input type="hidden" name="GPSCoords" id="GPSCoords" />
 
 <!-- ICP Operations Only Section -->
-<div class="section">
-    <div class="section-title">FOR ICP OPERATIONS ONLY</div>
+<div class="section" role="region" aria-labelledby="icp-section-title">
+    <div class="section-title" id="icp-section-title">FOR ICP OPERATIONS ONLY</div>
     
     <!-- Row 1 -->
     <div class="field-row">
         <div class="field-group">
-            <label>
+            <label for="RefID">
                 A. Incident Ref ID:
-                <span class="info-icon" tabindex="0">i</span>
-                <div class="tooltip">Sequential reference number assigned by ICP staff for tracking this incident. Use format: YYYYMMDD-### (e.g., 20231015-001)</div>
+                <span class="info-icon" tabindex="0" role="button" aria-label="Help information">i</span>
+                <div class="tooltip" role="tooltip" id="tooltip-RefID">Sequential reference number assigned by ICP staff for tracking this incident. Use format: YYYYMMDD-### (e.g., 20231015-001)</div>
             </label>
-            <input type="text" name="RefID" id="RefID" required />
+            <input type="text" name="RefID" id="RefID" aria-describedby="tooltip-RefID" required />
             <button type="button" class="auto-gen-btn" onclick="generateRefID()">Auto-Generate</button>
         </div>
         
         <div class="field-group">
-            <label>
-                Notify EOC:
-                <span class="info-icon" tabindex="0">i</span>
-                <div class="tooltip">Check if the Emergency Operations Center (EOC) needs to be notified of this incident. Select Yes for incidents requiring EOC awareness or potential resource coordination.</div>
-            </label>
-            <div class="radio-group">
-                <input type="radio" name="NotifyEOC" id="NotifyEOC_Yes" value="Yes" required />
-                <label for="NotifyEOC_Yes">Yes</label>
-                <input type="radio" name="NotifyEOC" id="NotifyEOC_No" value="No" />
-                <label for="NotifyEOC_No">No</label>
-                <input type="radio" name="NotifyEOC" id="NotifyEOC_NA" value="n/a" />
-                <label for="NotifyEOC_NA">n/a</label>
-            </div>
+            <fieldset style="border: none; padding: 0; margin: 0;">
+                <legend style="font-weight: bold; margin-bottom: 3px; font-size: 11px;">
+                    Notify EOC:
+                    <span class="info-icon" tabindex="0" role="button" aria-label="Help information">i</span>
+                    <div class="tooltip" role="tooltip">Check if the Emergency Operations Center (EOC) needs to be notified of this incident. Select Yes for incidents requiring EOC awareness or potential resource coordination.</div>
+                </legend>
+                <div class="radio-group">
+                    <input type="radio" name="NotifyEOC" id="NotifyEOC_Yes" value="Yes" required />
+                    <label for="NotifyEOC_Yes">Yes</label>
+                    <input type="radio" name="NotifyEOC" id="NotifyEOC_No" value="No" />
+                    <label for="NotifyEOC_No">No</label>
+                    <input type="radio" name="NotifyEOC" id="NotifyEOC_NA" value="n/a" />
+                    <label for="NotifyEOC_NA">n/a</label>
+                </div>
+            </fieldset>
         </div>
         
         <div class="field-group">
@@ -655,8 +760,8 @@ window.onload = function() {
 </div>
 
 <!-- CERT Reporting Section -->
-<div class="section">
-    <div class="section-title">CERT REPORTING SECTION</div>
+<div class="section" role="region" aria-labelledby="cert-section-title">
+    <div class="section-title" id="cert-section-title">CERT REPORTING SECTION</div>
     
     <!-- Row 1 - 5 fields across -->
     <div class="field-row">
@@ -698,7 +803,7 @@ window.onload = function() {
                 <option value="n/a">n/a</option>
                 <option value="Other">Other (specify)</option>
             </select>
-            <input type="text" id="IncidentTypeOther" placeholder="Specify other..." style="display:none; margin-top: 3px;" />
+            <input type="text" id="IncidentTypeOther" name="IncidentTypeOther" placeholder="Specify other..." style="display:none; margin-top: 3px;" />
         </div>
         
         <div class="field-group">
@@ -772,8 +877,8 @@ window.onload = function() {
 </div>
 
 <!-- Radio Operator Tracking Section -->
-<div class="section">
-    <div class="section-title">FOR ICP/EOC USE - RADIO OPERATOR TRACKING</div>
+<div class="section" role="region" aria-labelledby="radio-section-title">
+    <div class="section-title" id="radio-section-title">FOR ICP/EOC USE - RADIO OPERATOR TRACKING</div>
     
     <div class="two-column">
         <!-- Receiving Operator Column -->
@@ -862,7 +967,7 @@ window.onload = function() {
 
 <!-- Submit Section -->
 <div class="submit-section">
-    <input type="button" class="SubmitBtn" value="Submit Form" onclick="submitForm()" />
+    <input type="submit" class="SubmitBtn" value="Submit Form" onclick="return submitForm()" />
 </div>
 
 </form>

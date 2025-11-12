@@ -11,21 +11,35 @@ This is a custom Winlink Express form based on the Los Gatos / Monte Sereno CERT
 - `CERT_Form_420.txt` - Template definition file (required by Winlink)
 - `CERT_Form_420_Initial.html` - Editable form for filling out reports
 - `CERT_Form_420_Viewer.html` - Read-only form for viewing received reports
+- `cert_logo.png` - Los Gatos / Monte Sereno CERT logo
+- `extract_logo.py` - Utility script to extract logo from PDF (development only)
 
 ## Version
 
-**Version 2.5, 2023-04**
+**Version 2.5, 2023-04** (Latest update: November 2025)
 
 Based on the official Los Gatos / Monte Sereno CERT Form 420 PDF.
+
+### Recent Improvements (November 2025)
+
+- **Added official CERT logo** extracted from original PDF
+- Fixed radio button validation to properly check group selections
+- Added ARIA labels and semantic HTML for improved accessibility
+- Enhanced GPS error handling with detailed user feedback
+- Added fieldset/legend structure for radio groups
+- Fixed missing name attribute on "Incident Type Other" field
+- Improved form validation to handle conditional required fields
 
 ## Features
 
 - ✅ Responsive design (desktop, tablet, smartphone)
 - ✅ Auto-generated Reference ID with override option
 - ✅ GPS coordinates auto-detection with manual fallback
+- ✅ Enhanced GPS error handling with detailed feedback
 - ✅ Date/time auto-population for radio operators
 - ✅ Interactive help tooltips for all fields
-- ✅ Form validation requiring all fields
+- ✅ Improved form validation with proper radio button group support
+- ✅ Accessibility improvements (ARIA labels, semantic regions, fieldsets)
 - ✅ Print-friendly viewer layout
 - ✅ Compatible with Winlink Express
 

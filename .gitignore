@@ -34,3 +34,17 @@ Temporary Items
 
 # Node modules (if you add any tooling later)
 node_modules/
+
+# Python virtual environment
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Temporary extraction directories
+extracted_images/
+
+# Reference files (not part of main project)
+reference_*.html
+reference_*.txt
