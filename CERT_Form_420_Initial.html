@@ -120,6 +120,15 @@ body, td, th {
     resize: vertical;
 }
 
+.field-group input[type="text"]:disabled,
+.field-group select:disabled,
+.field-group textarea:disabled {
+    background-color: #e9ecef;
+    color: #6c757d;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
 .field-group.checkbox-group {
     display: flex;
     gap: 15px;
@@ -186,14 +195,26 @@ body, td, th {
 
 .radio-group {
     display: flex;
-    gap: 15px;
+    gap: 20px;
     align-items: center;
+}
+
+.radio-option {
+    display: flex;
+    align-items: center;
+    gap: 0;
+}
+
+.radio-group input[type="radio"] {
+    margin-left: 0;
+    margin-right: 5px;
 }
 
 .radio-group label {
     display: inline;
     font-weight: normal;
-    margin-left: 3px;
+    margin-left: 0;
+    margin-right: 0;
 }
 
 fieldset {
@@ -452,10 +473,6 @@ function getGPSLocation() {
 function initializeForm() {
     var now = new Date();
     
-    // Set receiving operator date/time (current)
-    document.getElementById('RxOpDate').value = formatDate(now);
-    document.getElementById('RxOpTime').value = formatTime(now);
-    
     // Set sending operator date/time (current)
     document.getElementById('TxOpDate').value = formatDate(now);
     document.getElementById('TxOpTime').value = formatTime(now);
@@ -575,12 +592,8 @@ function submitForm() {
     }
     document.getElementById('GPSCoords').value = gpsCoords;
     
-    // Handle "Other" options
-    var incidentType = document.getElementById('IncidentType').value;
-    if (incidentType === 'Other') {
-        var otherType = document.getElementById('IncidentTypeOther').value;
-        document.getElementById('IncidentType').value = 'Other: ' + otherType;
-    }
+    // The Incident Type field will remain as "Other" if selected,
+    // and the custom text is submitted separately in IncidentTypeOther field
     
     return true;
 }
@@ -645,12 +658,18 @@ window.onload = function() {
                     <div class="tooltip" role="tooltip">Check if the Emergency Operations Center (EOC) needs to be notified of this incident. Select Yes for incidents requiring EOC awareness or potential resource coordination.</div>
                 </legend>
                 <div class="radio-group">
-                    <input type="radio" name="NotifyEOC" id="NotifyEOC_Yes" value="Yes" required />
-                    <label for="NotifyEOC_Yes">Yes</label>
-                    <input type="radio" name="NotifyEOC" id="NotifyEOC_No" value="No" />
-                    <label for="NotifyEOC_No">No</label>
-                    <input type="radio" name="NotifyEOC" id="NotifyEOC_NA" value="n/a" />
-                    <label for="NotifyEOC_NA">n/a</label>
+                    <div class="radio-option">
+                        <input type="radio" name="NotifyEOC" id="NotifyEOC_Yes" value="Yes" required />
+                        <label for="NotifyEOC_Yes">Yes</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" name="NotifyEOC" id="NotifyEOC_No" value="No" />
+                        <label for="NotifyEOC_No">No</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" name="NotifyEOC" id="NotifyEOC_NA" value="n/a" />
+                        <label for="NotifyEOC_NA">n/a</label>
+                    </div>
                 </div>
             </fieldset>
         </div>
@@ -662,12 +681,18 @@ window.onload = function() {
                 <div class="tooltip">Indicates whether this incident is being tracked on the ICP command white board. Select Yes if actively monitoring at ICP.</div>
             </label>
             <div class="radio-group">
-                <input type="radio" name="WhiteBoardListed" id="WhiteBoardListed_Yes" value="Yes" required />
-                <label for="WhiteBoardListed_Yes">Yes</label>
-                <input type="radio" name="WhiteBoardListed" id="WhiteBoardListed_No" value="No" />
-                <label for="WhiteBoardListed_No">No</label>
-                <input type="radio" name="WhiteBoardListed" id="WhiteBoardListed_NA" value="n/a" />
-                <label for="WhiteBoardListed_NA">n/a</label>
+                <div class="radio-option">
+                    <input type="radio" name="WhiteBoardListed" id="WhiteBoardListed_Yes" value="Yes" required />
+                    <label for="WhiteBoardListed_Yes">Yes</label>
+                </div>
+                <div class="radio-option">
+                    <input type="radio" name="WhiteBoardListed" id="WhiteBoardListed_No" value="No" />
+                    <label for="WhiteBoardListed_No">No</label>
+                </div>
+                <div class="radio-option">
+                    <input type="radio" name="WhiteBoardListed" id="WhiteBoardListed_NA" value="n/a" />
+                    <label for="WhiteBoardListed_NA">n/a</label>
+                </div>
             </div>
         </div>
         
@@ -678,12 +703,18 @@ window.onload = function() {
                 <div class="tooltip">Check if the incident has been resolved and requires no further action. Select Yes only when incident is completely closed.</div>
             </label>
             <div class="radio-group">
-                <input type="radio" name="Resolved" id="Resolved_Yes" value="Yes" required />
-                <label for="Resolved_Yes">Yes</label>
-                <input type="radio" name="Resolved" id="Resolved_No" value="No" />
-                <label for="Resolved_No">No</label>
-                <input type="radio" name="Resolved" id="Resolved_NA" value="n/a" />
-                <label for="Resolved_NA">n/a</label>
+                <div class="radio-option">
+                    <input type="radio" name="Resolved" id="Resolved_Yes" value="Yes" required />
+                    <label for="Resolved_Yes">Yes</label>
+                </div>
+                <div class="radio-option">
+                    <input type="radio" name="Resolved" id="Resolved_No" value="No" />
+                    <label for="Resolved_No">No</label>
+                </div>
+                <div class="radio-option">
+                    <input type="radio" name="Resolved" id="Resolved_NA" value="n/a" />
+                    <label for="Resolved_NA">n/a</label>
+                </div>
             </div>
         </div>
     </div>
@@ -714,12 +745,18 @@ window.onload = function() {
                 <div class="tooltip">Select Yes if this incident requires resources or action from the EOC. This may include equipment, personnel, or coordination with other agencies.</div>
             </label>
             <div class="radio-group">
-                <input type="radio" name="EOCResponseReq" id="EOCResponseReq_Yes" value="Yes" required />
-                <label for="EOCResponseReq_Yes">Yes</label>
-                <input type="radio" name="EOCResponseReq" id="EOCResponseReq_No" value="No" />
-                <label for="EOCResponseReq_No">No</label>
-                <input type="radio" name="EOCResponseReq" id="EOCResponseReq_NA" value="n/a" />
-                <label for="EOCResponseReq_NA">n/a</label>
+                <div class="radio-option">
+                    <input type="radio" name="EOCResponseReq" id="EOCResponseReq_Yes" value="Yes" required />
+                    <label for="EOCResponseReq_Yes">Yes</label>
+                </div>
+                <div class="radio-option">
+                    <input type="radio" name="EOCResponseReq" id="EOCResponseReq_No" value="No" />
+                    <label for="EOCResponseReq_No">No</label>
+                </div>
+                <div class="radio-option">
+                    <input type="radio" name="EOCResponseReq" id="EOCResponseReq_NA" value="n/a" />
+                    <label for="EOCResponseReq_NA">n/a</label>
+                </div>
             </div>
         </div>
         
@@ -739,12 +776,18 @@ window.onload = function() {
                 <div class="tooltip">Select Yes if responsibility for this incident has been transferred to another agency, EOC, or command post. Include details in field D.</div>
             </label>
             <div class="radio-group">
-                <input type="radio" name="Transferred" id="Transferred_Yes" value="Yes" required />
-                <label for="Transferred_Yes">Yes</label>
-                <input type="radio" name="Transferred" id="Transferred_No" value="No" />
-                <label for="Transferred_No">No</label>
-                <input type="radio" name="Transferred" id="Transferred_NA" value="n/a" />
-                <label for="Transferred_NA">n/a</label>
+                <div class="radio-option">
+                    <input type="radio" name="Transferred" id="Transferred_Yes" value="Yes" required />
+                    <label for="Transferred_Yes">Yes</label>
+                </div>
+                <div class="radio-option">
+                    <input type="radio" name="Transferred" id="Transferred_No" value="No" />
+                    <label for="Transferred_No">No</label>
+                </div>
+                <div class="radio-option">
+                    <input type="radio" name="Transferred" id="Transferred_NA" value="n/a" />
+                    <label for="Transferred_NA">n/a</label>
+                </div>
             </div>
         </div>
     </div>
@@ -894,7 +937,7 @@ window.onload = function() {
                     <span class="info-icon" tabindex="0">i</span>
                     <div class="tooltip">Name of the radio operator who received this message. This is typically the operator at ICP or EOC who is logging the incoming message from the field.</div>
                 </label>
-                <input type="text" name="RxOpName" id="RxOpName" required />
+                <input type="text" name="RxOpName" id="RxOpName" disabled />
             </div>
             
             <div class="field-group" style="margin-bottom: 10px;">
@@ -903,7 +946,7 @@ window.onload = function() {
                     <span class="info-icon" tabindex="0">i</span>
                     <div class="tooltip">Amateur radio call sign of the receiving operator (e.g., KG6XYZ). Enter 'n/a' if not using amateur radio or if operator doesn't have a call sign.</div>
                 </label>
-                <input type="text" name="RxOpCall" id="RxOpCall" required />
+                <input type="text" name="RxOpCall" id="RxOpCall" disabled />
             </div>
             
             <div class="field-group" style="margin-bottom: 10px;">
@@ -912,7 +955,7 @@ window.onload = function() {
                     <span class="info-icon" tabindex="0">i</span>
                     <div class="tooltip">Time the message was received. Auto-populated with current time, but can be adjusted if needed. Use 24-hour format (e.g., 14:30 for 2:30 PM).</div>
                 </label>
-                <input type="text" name="RxOpTime" id="RxOpTime" required />
+                <input type="text" name="RxOpTime" id="RxOpTime" disabled />
             </div>
             
             <div class="field-group" style="margin-bottom: 10px;">
@@ -921,7 +964,7 @@ window.onload = function() {
                     <span class="info-icon" tabindex="0">i</span>
                     <div class="tooltip">Date the message was received. Auto-populated with current date, but can be adjusted if needed. Format: MM/DD/YYYY</div>
                 </label>
-                <input type="text" name="RxOpDate" id="RxOpDate" required />
+                <input type="text" name="RxOpDate" id="RxOpDate" disabled />
             </div>
         </div>
         
