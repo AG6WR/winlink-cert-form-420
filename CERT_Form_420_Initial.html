@@ -25,23 +25,6 @@ body, td, th {
     color: white;
     padding: 10px;
     margin-bottom: 15px;
-    position: relative;
-}
-
-.form-header .header-logo {
-    position: absolute;
-    left: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    max-width: 200px;
-    max-height: 80px;
-    height: auto;
-    width: auto;
-}
-
-.form-header .header-text {
-    width: 100%;
-    text-align: center;
 }
 
 .form-header h1 {
@@ -618,12 +601,9 @@ window.onload = function() {
 
 <!-- Form Header -->
 <div class="form-header">
-    <img src="cert_logo.png" alt="Los Gatos / Monte Sereno CERT Logo" class="header-logo" />
-    <div class="header-text">
-        <h1>Los Gatos / Monte Sereno CERT</h1>
-        <div class="subtitle">CERT Form 420 - INCIDENT REPORT</div>
-        <div class="version">Version 2.5c, 2023-04</div>
-    </div>
+    <h1>Los Gatos / Monte Sereno CERT</h1>
+    <div class="subtitle">CERT Form 420 - INCIDENT REPORT</div>
+    <div class="version">Version 2.5c, 2023-04</div>
 </div>
 
 <form method="post" action="http://{FormServer}:{FormPort}" id="formID" name="formID" enctype="multipart/form-data" aria-label="CERT Form 420 Incident Report" onsubmit="return confirm('To complete your form submission, click OK and close the open browser window. You will return to the new message window so you can post your message to the outbox');">
