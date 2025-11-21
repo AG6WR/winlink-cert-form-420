@@ -283,22 +283,22 @@ function printPage() {
     <div class="field-row">
         <div class="field-group">
             <div class="field-label">A. Incident Ref ID:</div>
-            <div class="field-value"><var RefID></div>
+            <div class="field-value">{var RefID}</div>
         </div>
         
         <div class="field-group">
             <div class="field-label">Notify EOC:</div>
-            <div class="field-value"><var NotifyEOC></div>
+            <div class="field-value">{var NotifyEOC}</div>
         </div>
         
         <div class="field-group">
             <div class="field-label">White Board Listed?:</div>
-            <div class="field-value"><var WhiteBoardListed></div>
+            <div class="field-value">{var WhiteBoardListed}</div>
         </div>
         
         <div class="field-group">
             <div class="field-label">Resolved:</div>
-            <div class="field-value"><var Resolved></div>
+            <div class="field-value">{var Resolved}</div>
         </div>
     </div>
     
@@ -306,22 +306,22 @@ function printPage() {
     <div class="field-row">
         <div class="field-group">
             <div class="field-label">B. Priority:</div>
-            <div class="field-value"><var Priority></div>
+            <div class="field-value">{var Priority}</div>
         </div>
         
         <div class="field-group">
             <div class="field-label">C. EOC Response Requested?:</div>
-            <div class="field-value"><var EOCResponseReq></div>
+            <div class="field-value">{var EOCResponseReq}</div>
         </div>
         
         <div class="field-group">
             <div class="field-label">E. Ham Records EOC ID:</div>
-            <div class="field-value"><var HamEOCID></div>
+            <div class="field-value">{var HamEOCID}</div>
         </div>
         
         <div class="field-group">
             <div class="field-label">Transferred?:</div>
-            <div class="field-value"><var Transferred></div>
+            <div class="field-value">{var Transferred}</div>
         </div>
     </div>
     
@@ -329,7 +329,7 @@ function printPage() {
     <div class="field-row">
         <div class="field-group full-width">
             <div class="field-label">D. ICP notes on Actions Plan or EOC Request:</div>
-            <div class="field-value multiline"><var ICPNotes></div>
+            <div class="field-value multiline">{var ICPNotes}</div>
         </div>
     </div>
 </div>
@@ -342,27 +342,27 @@ function printPage() {
     <div class="field-row">
         <div class="field-group">
             <div class="field-label">F. Your Name:</div>
-            <div class="field-value"><var YourName></div>
+            <div class="field-value">{var YourName}</div>
         </div>
         
         <div class="field-group">
             <div class="field-label">G. Team ID:</div>
-            <div class="field-value"><var TeamID></div>
+            <div class="field-value">{var TeamID}</div>
         </div>
         
         <div class="field-group">
             <div class="field-label">H. Incident Type:</div>
-            <div class="field-value"><var IncidentType></div>
+            <div class="field-value">{var IncidentType}</div>
         </div>
         
         <div class="field-group">
             <div class="field-label">I. Phone Number:</div>
-            <div class="field-value"><var PhoneNumber></div>
+            <div class="field-value">{var PhoneNumber}</div>
         </div>
         
         <div class="field-group">
             <div class="field-label">J. Site Access:</div>
-            <div class="field-value"><var SiteAccess></div>
+            <div class="field-value">{var SiteAccess}</div>
         </div>
     </div>
     
@@ -370,8 +370,8 @@ function printPage() {
     <div class="field-row">
         <div class="field-group full-width">
             <div class="field-label">K. Incident Address:</div>
-            <div class="field-value multiline"><var IncidentAddress>
-<var GPSCoords></div>
+            <div class="field-value multiline">{var IncidentAddress}
+{var GPSCoords}</div>
         </div>
     </div>
     
@@ -379,7 +379,7 @@ function printPage() {
     <div class="field-row">
         <div class="field-group full-width">
             <div class="field-label">L. Incident Description:</div>
-            <div class="field-value multiline"><var IncidentDesc></div>
+            <div class="field-value multiline">{var IncidentDesc}</div>
         </div>
     </div>
     
@@ -387,7 +387,7 @@ function printPage() {
     <div class="field-row">
         <div class="field-group full-width">
             <div class="field-label">M. CERT Action Plan:</div>
-            <div class="field-value multiline"><var CERTActionPlan></div>
+            <div class="field-value multiline">{var CERTActionPlan}</div>
         </div>
     </div>
     
@@ -395,7 +395,7 @@ function printPage() {
     <div class="field-row">
         <div class="field-group full-width">
             <div class="field-label">N. Notes:</div>
-            <div class="field-value multiline"><var Notes></div>
+            <div class="field-value multiline">{var Notes}</div>
         </div>
     </div>
 </div>
@@ -411,22 +411,22 @@ function printPage() {
             
             <div style="margin-bottom: 8px;">
                 <div class="field-label">Name:</div>
-                <div class="field-value"><var RxOpName></div>
+                <div class="field-value">{var RxOpName}</div>
             </div>
             
             <div style="margin-bottom: 8px;">
                 <div class="field-label">Call Sign:</div>
-                <div class="field-value"><var RxOpCall></div>
+                <div class="field-value">{var RxOpCall}</div>
             </div>
             
             <div style="margin-bottom: 8px;">
                 <div class="field-label">Time:</div>
-                <div class="field-value"><var RxOpTime></div>
+                <div class="field-value">{var RxOpTime}</div>
             </div>
             
             <div style="margin-bottom: 8px;">
                 <div class="field-label">Date:</div>
-                <div class="field-value"><var RxOpDate></div>
+                <div class="field-value">{var RxOpDate}</div>
             </div>
         </div>
         
@@ -436,22 +436,22 @@ function printPage() {
             
             <div style="margin-bottom: 8px;">
                 <div class="field-label">Name:</div>
-                <div class="field-value"><var TxOpName></div>
+                <div class="field-value">{var TxOpName}</div>
             </div>
             
             <div style="margin-bottom: 8px;">
                 <div class="field-label">Call Sign:</div>
-                <div class="field-value"><var TxOpCall></div>
+                <div class="field-value">{var TxOpCall}</div>
             </div>
             
             <div style="margin-bottom: 8px;">
                 <div class="field-label">Time:</div>
-                <div class="field-value"><var TxOpTime></div>
+                <div class="field-value">{var TxOpTime}</div>
             </div>
             
             <div style="margin-bottom: 8px;">
                 <div class="field-label">Date:</div>
-                <div class="field-value"><var TxOpDate></div>
+                <div class="field-value">{var TxOpDate}</div>
             </div>
         </div>
     </div>
@@ -460,11 +460,11 @@ function printPage() {
 <!-- Metadata -->
 <div class="metadata">
     <strong>Message Metadata:</strong><br/>
-    Express Sending Station: <var MsgSender><br/>
-    Senders Express Version: <var ProgramVersion><br/>
+    Express Sending Station: {var MsgSender}<br/>
+    Senders Express Version: {var ProgramVersion}<br/>
     Form Version: 2.5, 2023-04<br/>
-    Location Source: <var GPSSource><br/>
-    GPS Coordinates: [Lat: <var GPSLat>, Lon: <var GPSLon>]
+    Location Source: {var GPSSource}<br/>
+    GPS Coordinates: [Lat: {var GPSLat}, Lon: {var GPSLon}]
 </div>
 
 </div>

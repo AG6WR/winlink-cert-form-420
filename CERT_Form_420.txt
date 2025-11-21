@@ -1,8 +1,8 @@
 Form:CERT_Form_420_Initial.html,CERT_Form_420_Viewer.html
 
-To: 
-Subject: CERT 420 - <var Priority> - Ref: <var RefID> - <var IncidentAddress>
-Readonly: True
+To:
+Subject:CERT 420 - <var Priority> - Ref: <var RefID> - <var IncidentAddress>
+Readonly:True
 Msg:
 Los Gatos / Monte Sereno CERT
 CERT Form 420 - INCIDENT REPORT
@@ -53,10 +53,10 @@ FOR ICP/EOC USE - RADIO OPERATOR TRACKING
 ========================================
 
 RECEIVING RADIO OPERATOR          SENDING RADIO OPERATOR
-Name: <var RxOpName>              Name: <var TxOpName>
-Call Sign: <var RxOpCall>         Call Sign: <var TxOpCall>
-Time: <var RxOpTime>              Time: <var TxOpTime>
-Date: <var RxOpDate>              Date: <var TxOpDate>
+Name: _______________________     Name: <var TxOpName>
+Call Sign: __________________     Call Sign: <var TxOpCall>
+Time: _______________________     Time: <var TxOpTime>
+Date: _______________________     Date: <var TxOpDate>
 
 ========================================
 Express Sending Station: <MsgSender>
