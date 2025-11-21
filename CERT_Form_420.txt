@@ -1,4 +1,4 @@
-Form: CERT_Form_420_Initial.html,CERT_Form_420_Viewer.html
+Form:CERT_Form_420_Initial.html,CERT_Form_420_Viewer.html
 
 To: 
 Subject: CERT 420 - <var Priority> - Ref: <var RefID> - <var IncidentAddress>
