@@ -258,6 +258,16 @@ function printPage() {
 </head>
 
 <body>
+<!-- 
+    NOTE: This viewer does NOT have a <form> wrapper tag, unlike CERT213_Initial_Viewer.html
+    which includes: <form action="http://{FormServer}:{FormPort}" enctype="multipart/form-data" ...>
+    
+    The <form> tag appears to be used for reply functionality or interactive features in some Winlink forms.
+    Our read-only viewer works correctly without it (tested and confirmed Nov 2025).
+    
+    If reply functionality or form submission from the viewer is needed in the future, 
+    reference CERT213_Initial_Viewer.html for the proper <form> tag structure.
+-->
 <div class="form-container">
 
 <!-- Print Button -->
